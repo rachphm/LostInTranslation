@@ -51,7 +51,7 @@ public class JSONTranslator implements Translator {
 
                 List<String> languages = new ArrayList<>();
 
-                getCountryCodes().add(countryCode);
+                countryCodes.add(countryCode);
 
                 // iterate through the other keys to get the information that we need
                 for (String key : countryData.keySet()) {
@@ -61,6 +61,9 @@ public class JSONTranslator implements Translator {
 
                         if (!languages.contains(languageCode)) {
                             languages.add(languageCode);
+                        }
+                        if (!languageCodes.contains(languageCode)) {
+                            languageCodes.add(languageCode);
                         }
                     }
                 }
