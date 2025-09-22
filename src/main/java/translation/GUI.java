@@ -78,7 +78,7 @@ public class GUI {
 
             // adding listener for when the user clicks the submit button
             countryList.addListSelectionListener(e -> {
-                if (e.getValueIsAdjusting()) {
+                if (!e.getValueIsAdjusting()) {
                     updateTranslationLogic.run();
                 }
             });
