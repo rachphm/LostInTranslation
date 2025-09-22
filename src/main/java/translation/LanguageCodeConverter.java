@@ -42,12 +42,19 @@ public class LanguageCodeConverter {
             iterator.next(); // skip the first line
             while (iterator.hasNext()) {
                 String line = iterator.next();
-                if (line.isEmpty()) continue; // skip blank lines
+                if (line.isEmpty()) continue;
                 // Split by whitespace: last element is the code, the rest is the language name
                 String[] parts = line.split("\\s+");
                 if (parts.length < 2) continue; // skip malformed lines
+
                 String code = parts[parts.length - 1].trim(); // last piece is the code
-                String language = String.join(" ", Arrays.copyOf(parts, parts.length - 1)).trim();
+
+                String language = "";
+                for (int i = 0; i < parts.length - 1; i++) {
+                    if (i > 0) language += " "; // add space between words
+                    language += parts[i];
+                }
+                language = language.trim();
 
                 //  Populate the maps
                 languageCodeToLanguage.put(code, language);
